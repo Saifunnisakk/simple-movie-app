@@ -122,45 +122,19 @@ export const Main = () => {
   return (
     <>
       <div className="header">
-        <nav>
-          <ul>
-            <li>
-              <a href="#" onClick={() => handleGenreChange("28")}>
-                Action
-              </a>
-            </li>
-            <li>
-              <a href="#" onClick={() => handleGenreChange("35")}>
-                Comedy
-              </a>
-            </li>
-            <li>
-              <a href="#" onClick={() => handleGenreChange("18")}>
-                Drama
-              </a>
-            </li>
-            <li>
-              <a href="#" onClick={() => handleGenreChange("53")}>
-                Thriller
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <form onSubmit={handleSearch}>
-          <div className="search-btn">
-            <input
-              type="text"
-              placeholder="Enter movie name"
-              className="inputtext"
-              name="searchInput"
-            />
-            <button type="submit" className="search-icon-button">
-              <span role="img" aria-label="Search">
-                🔍
-              </span>
-            </button>
-          </div>
-        </form>
+        <div className="filter-container">
+          <label htmlFor="genreSelect">Filter by:</label>
+          <select
+            id="genreSelect"
+            value={selectedGenre}
+            onChange={(e) => handleGenreChange(e.target.value)}
+          >
+            <option value="28">Action</option>
+            <option value="35">Comedy</option>
+            <option value="18">Drama</option>
+            <option value="53">Thriller</option>
+          </select>
+        </div>
         <div className="sort-container">
           <label htmlFor="sortSelect">Sort by:</label>
           <select id="sortSelect" value={sortBy} onChange={handleSortChange}>
@@ -170,6 +144,19 @@ export const Main = () => {
             <option value="vote_average.asc">Vote Average (Ascending)</option>
           </select>
         </div>
+        <form onSubmit={handleSearch} className="search-btn">
+          <input
+            type="text"
+            placeholder="Enter movie name"
+            className="inputtext"
+            name="searchInput"
+          />
+          <button type="submit" className="search-icon-button">
+            <span role="img" aria-label="Search">
+              🔍
+            </span>
+          </button>
+        </form>
       </div>
       <div className="container">
         {visibleMovies && visibleMovies.length === 0 ? (

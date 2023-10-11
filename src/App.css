@@ -19,7 +19,7 @@ body {
   align-items: center;
   margin-bottom: 30px;
 }
-nav ul {
+/* nav ul {
   display: flex;
 }
 nav ul li {
@@ -54,8 +54,8 @@ nav ul li a:focus {
   border-radius: 20px;
 }
 nav ul li a:focus::before {
-  width: 0%;
-}
+  width: 0%; */
+/* } */
 .search-btn {
   display: flex;
   align-items: center;
@@ -97,17 +97,19 @@ button {
 .inputtext::placeholder {
   color: white;
 }
-.sort-container {
+.sort-container,
+.filter-container {
   margin-right: 20px;
   position: relative;
 }
-.sort-container label {
+.sort-container label .filter-container label {
   color: white;
   font-size: 1rem;
   font-weight: bold;
   margin-right: 10px;
 }
-.sort-container select {
+.sort-container select,
+.filter-container select {
   outline: none;
   border: 1px solid var(--primary-color);
   border-radius: 5px;
@@ -120,9 +122,14 @@ button {
   appearance: none;
   cursor: pointer;
 }
-.sort-container select:hover {
+.sort-container select:hover .filter-container select:hover {
   background-color: var(--primary-color);
   opacity: 0.8;
+}
+.filter-container label,
+.sort-container label {
+  color: white !important;
+  margin-right: 5px !important;
 }
 .container {
   margin: auto;
@@ -257,13 +264,7 @@ button {
 @media (max-width: 900px) {
   .header {
     height: 180px;
-  }
-  nav ul {
-    display: flex;
     flex-direction: column;
-  }
-  nav ul li {
-    padding-top: 10px;
   }
   .search-btn {
     width: 200px;
@@ -271,5 +272,21 @@ button {
   }
   .modal-content {
     width: 90%;
+  }
+  .filter-container,
+  .sort-container {
+    width: 100%;
+    margin-left: 50px;
+  }
+  .filter-container label {
+    margin-right: 10px !important;
+  }
+  .sort-container label {
+    margin-right: 15px !important;
+  }
+  .search-btn {
+    margin-top: 10px;
+    width: 85%;
+    margin-left: 40px;
   }
 }
